@@ -6,26 +6,15 @@
 
 result = []
 ARGV.each do |arg|
-    # skip if not integer
-    next if arg !~ /^-?[0-9]+$/
+  # Skip if not an integer
+  next unless arg =~ /^-?\d+$/
 
-    # convert to integer
-    i_arg = arg.to_i
-    
-    # insert result at the right position
-    is_inserted = false
-    i = 0
-    l = result.size
-    while !is_inserted && i < l do
-        if result[i] < i_arg
-            result.insert(i, i_arg)
-            is_inserted = true
-            break
-        else
-            i += 1
-        end
-    end
-    result << i_arg if !is_inserted
+  # Convert to integer and add to the result array
+  result << arg.to_i
 end
 
+# Sort the result array in ascending order
+result.sort!
+
+# Print the sorted integers
 puts result
